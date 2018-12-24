@@ -5,6 +5,7 @@ import { Redirect, Link } from "react-router-dom";
 
 import {
     Header,
+    Content,
 } from '../components';
 
 import {
@@ -36,12 +37,13 @@ class Home extends Component {
         return (
             <div>
                 <Header isLogin={this.props.username} />
-                Hello admin {this.props.username}
-                {this.props.data.map((datanya, index) => {
+                {/* Hello admin {this.props.username} */}
+                <Content data={this.props.data} />
+                {/* {this.props.data.map((datanya, index) => {
                     return (
                         <p key={index}>{datanya.name}</p>
                     )
-                })}
+                })} */}
             </div>
         )
     }
