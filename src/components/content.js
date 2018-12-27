@@ -12,10 +12,13 @@ class Content extends Component {
     };
 
     render() {
+        let nama = localStorage.getItem('username');
+        let page = localStorage.getItem('page');
         return (
             <div className="container" style={{ marginTop: 25 }}>
                 <div className="row">
                     <div className="col-sm-12">
+                        <h3 className="card-title text-center">{page == 'signup' ? 'Selamat bergabung ' : 'Hallo '} : {nama}</h3>
                         <div className="row">
                             {this.props.data.map((datanya, index) => {
                                 return (

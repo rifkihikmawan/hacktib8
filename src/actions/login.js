@@ -1,27 +1,35 @@
 import axios from 'axios';
 
-const ubahLogin = (username, password) => {
+function setError(param) {
+    return {
+        type: 'SET_ERROR',
+        payload: {
+            isError: param,
+        }
+    }
+}
+
+function setLogin(username) {
     localStorage.setItem('username', username);
     return {
         type: 'LOGIN',
         payload: {
             username: username,
-            password: password,
         }
     }
 }
 
-const ubahUsername = (username) => {
-    localStorage.setItem('username', username);
-    return {
-        type: 'CHANGE_USERNAME',
-        payload: {
-            username: username
+const login = (username, password) => {
+    return (dispatch) => {
+        if (username == '' || password == '') {
+            dispatch(setError(true));
+        } else {
+            dispatch(setError(false));
+            dispatch(setLogin(username));
         }
     }
 }
 
 export {
-    ubahLogin,
-    ubahUsername,
+    login,
 }

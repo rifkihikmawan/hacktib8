@@ -6,6 +6,7 @@ import store from './configs';
 
 import Login from './pages/Login';
 import Home from './pages/Home';
+import Signup from './pages/Signup';
 
 import logo from './logo.svg';
 import './App.css';
@@ -26,6 +27,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Login} />
             <Route path='/Home' component={Home} />
+            <Route path='/Signup' component={Signup} />
           </Switch>
         </Router>
       </Provider>

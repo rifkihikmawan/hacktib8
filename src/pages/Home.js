@@ -9,7 +9,6 @@ import {
 } from '../components';
 
 import {
-    LoginActionCreator,
     HomeActionCreator,
 } from './../actions';
 
@@ -19,32 +18,21 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        this.cekUsername();
-        this.props.getListData();
-    }
-
-    cekUsername = () => {
-        if (!this.props.username) {
-            this.props.ubahUsername(localStorage.getItem('username'))
+        let username = localStorage.getItem('username');
+        let page = localStorage.getItem('page');
+        if (username === null) {
+            this.props.history.push(page);
+        } else {
+            this.props.getListData();
         }
-    }
-
-    handleLogout = () => {
-        localStorage.removeItem('username');
     }
 
     render() {
         return (
             <div>
                 <Header isLogin={this.props.username} />
-                {/* Hello admin {this.props.username} */}
                 <Content data={this.props.data} />
-                {/* {this.props.data.map((datanya, index) => {
-                    return (
-                        <p key={index}>{datanya.name}</p>
-                    )
-                })} */}
-            </div>
+            </div >
         )
     }
 }
@@ -62,7 +50,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        ubahUsername: (username) => dispatch(LoginActionCreator.ubahUsername(username)),
         getListData: () => dispatch(HomeActionCreator.getListData()),
     }
 };

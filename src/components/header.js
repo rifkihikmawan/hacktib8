@@ -4,11 +4,19 @@ import { Redirect, Link } from "react-router-dom";
 
 import "../pages/css/home.css";
 
+import {
+    HomeActionCreator,
+} from './../actions';
+
 class Header extends Component {
     constructor(props) {
         super(props);
 
     };
+
+    handleLogout = () => {
+        this.props.logout();
+    }
 
     render() {
         return (
@@ -44,6 +52,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+
+        logout: () => dispatch(HomeActionCreator.logout()),
 
     };
 };

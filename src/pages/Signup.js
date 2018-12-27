@@ -8,7 +8,7 @@ import {
     LoginActionCreator,
 } from './../actions';
 
-class Login extends Component {
+class Signup extends Component {
     constructor() {
         super();
         this.state = {
@@ -18,7 +18,7 @@ class Login extends Component {
     }
 
     handleLogin = () => {
-        localStorage.setItem('page', '/');
+        localStorage.setItem('page', 'signup');
         let { username, password } = this.state;
         this.props.login(username, password);
     }
@@ -37,8 +37,8 @@ class Login extends Component {
                     <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
                         <div className="card card-signin my-5">
                             <div className="card-body">
-                                <h3 className="card-title text-center">SIGN IN</h3>
-                                <h6 className="card-title text-center" style={{ fontSize: 14, color: 'red', fontWeight: 'bold' }}>{isError ? 'Harus diisi dengan benar !' : ''}</h6>
+                                <h3 className="card-title text-center">SIGN UP</h3>
+                                <h6 className="card-title text-center" style={{ fontSize: 14, color: 'red', fontWeight: 'bold' }}>{isError ? 'Harus diisi dengan benar !' : 'Silahkan isi form dengan benar'}</h6>
                                 <form className="form-signin">
                                     <div className="form-label-group">
                                         <input type="text" id="inputUsername" className="form-control" placeholder={'USERNAME'} onChange={(e) => this.handleOnChangeText(e.target.value, 'username')} required autoFocus />
@@ -49,13 +49,13 @@ class Login extends Component {
                                         <label htmlFor="inputPassword">Password</label>
                                     </div>
 
-                                    <Link to={`/home`} onClick={() => this.handleLogin()} className="btn btn-lg btn-primary btn-block text-uppercase">
-                                        Sign in
+                                    <Link to={`/home`} onClick={() => this.handleLogin()} className="btn btn-lg btn-google btn-block text-uppercase">
+                                        Sign up
                                     </Link>
 
                                     <hr className="my-4" />
-                                    <Link to={`/signup`} className="btn btn-lg btn-google btn-block text-uppercase">
-                                        Sign UP
+                                    <Link to={`/`} className="btn btn-lg btn-primary btn-block text-uppercase">
+                                        Sign in
                                     </Link>
                                 </form>
                             </div>
@@ -84,4 +84,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

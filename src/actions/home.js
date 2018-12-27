@@ -5,14 +5,10 @@ const getListData = () => {
         axios
             .get("https://swapi.co/api/people/")
             .then(response => {
-                console.log("masuk pak eko", response);
-                // let data = response.data.results;
-                // let names = data.map(datum => datum.name); //array of names
-                // let newUserName = names[1];
                 dispatch(getData(response.data.results));
             })
             .catch(err => {
-                // dispatch(ubahUserNameFailed(err.message));
+
             })
     }
 }
@@ -26,6 +22,17 @@ const getData = (data) => {
     }
 }
 
+const logout = () => {
+    localStorage.removeItem('username');
+    return {
+        type: 'REMOVE_USERNAME',
+        payload: {
+            username: '',
+        }
+    }
+}
+
 export {
+    logout,
     getListData,
 }

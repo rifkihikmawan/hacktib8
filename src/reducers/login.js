@@ -1,7 +1,7 @@
 const initialState = {
     username: '',
     password: '',
-    nama: 'rifki',
+    isError: false,
     data: [],
 };
 
@@ -11,20 +11,19 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 username: action.payload.username,
-                password: action.payload.password,
             };
 
-        case 'CHANGE_USERNAME':
+        case 'REMOVE_USERNAME':
             return {
                 ...state,
-                username: action.payload.username
-            };
+                username: action.payload.username,
+            }
 
-        // case 'CHANGE_SWAPI2':
-        //     return {
-        //         ...state,
-        //         data: action.payload.data
-        //     };
+        case 'SET_ERROR':
+            return {
+                ...state,
+                isError: action.payload.isError,
+            }
 
         default:
             return state;
